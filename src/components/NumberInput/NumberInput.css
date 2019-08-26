@@ -1,0 +1,41 @@
+.NumberInput {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.NumberInput-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.NumberInput input {
+  text-align: left;
+  padding-left: .25rem;
+  border: none;
+  background-color: #ffd394;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  padding-left: .4rem;
+  font-size: 1.1rem;
+  width: 3rem;
+}
+
+.NumberInput label {
+  text-align: left;
+  padding: 0 1rem 0 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.NumberInput button {
+  margin-top: 2rem;
+  padding: .75rem 3rem;
+  background-color: orangered;
+  color: white;
+  width: 14rem;
+}

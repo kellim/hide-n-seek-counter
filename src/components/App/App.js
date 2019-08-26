@@ -1,10 +1,11 @@
 import React from 'react';
+import HideNSeekCounter from '../HideNSeekCounter'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hide & Seek Counter</h1>
+      <HideNSeekCounter />
     </div>
   );
 }
