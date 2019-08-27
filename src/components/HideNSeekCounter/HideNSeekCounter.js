@@ -15,7 +15,10 @@ class HideNSeekCounter extends Component {
     }
     this.updateNumberInput = this.updateNumberInput.bind(this)
     this.processSetupForm = this.processSetupForm.bind(this)
+    this.handleRestartBtnClick = this.handleRestartBtnClick.bind(this)
+    this.handleReturnBtnClick = this.handleReturnBtnClick.bind(this)
     this.secondsTimer = null
+
   }
 
   componentWillUnmount() {
@@ -26,39 +29,68 @@ class HideNSeekCounter extends Component {
     this.setState({ inputValue: evt.target.value })
   }
 
+  handleRestartBtnClick() {
+    clearInterval(this.secondsTimer)
+    this.setState({ 
+      currentCount: 0,
+      appStatus: "counting"
+    })
+    this.startCounting()
+  }
+
+  handleReturnBtnClick() {
+    clearInterval(this.secondsTimer)
+    this.setState({ 
+      appStatus: "setup",
+      currentCount: 0
+    })
+  }
+
   processSetupForm(evt) {
     evt.preventDefault()
-    const maxCount = parseInt(evt.target['countInput'].value)
     this.setState({ appStatus: "counting"})
+    this.startCounting()
+  }
+
+  startCounting() {
     this.secondsTimer = setInterval(() => {
       this.setState(st => ({
         currentCount: st.currentCount + 1
       }), function() {
-        if (this.state.currentCount >= maxCount) {
+        if (this.state.currentCount >= this.state.inputValue) {
           clearInterval(this.secondsTimer)
-          this.setState({ appStatus: "done"})
+          this.setState({ appStatus: "done" })
         }
       })
     }, 1000)
   }
 
   render() {
+    const { inputValue, currentCount, appStatus } = this.state
     return (
       <div className="HideNSeekCounter">
         <h1 className="HideNSeekCounter-title">Hide & Seek Counter</h1>
-      {this.state.appStatus === "setup" &&
+      {appStatus === "setup" ?
         <>
           <p className="HideNSeekCounter-setup-text">The person who's not hiding: Enter the seconds to count up to and click
             the <strong>Start Counting</strong> button. Then you can close your eyes while everyone else
             hides as you'll hear a sound when it's time to say "Ready or not, here I come!" Just make sure your volume is on.</p> 
-          <NumberInput countValue={this.state.inputValue} handleChange={this.updateNumberInput} handleSubmit={this.processSetupForm} />
+          <NumberInput countValue={inputValue} handleChange={this.updateNumberInput} handleSubmit={this.processSetupForm} />
         </>
-      }
-      {(this.state.appStatus === "counting" || this.state.appStatus === "done") &&
-        <SecondsCounter currentCount={this.state.currentCount} />
-      }
-      {this.state.appStatus === "done" &&
-        <p className="HideNSeekCounter-done">Ready or not, here I come!</p>
+      :
+        <>
+          <SecondsCounter currentCount={currentCount} />
+          {appStatus === "done" &&
+            <div className="HideNSeekCounter-done">
+              <p>Time's Up!</p> 
+              <p>Ready or not, here I come!</p>
+            </div>
+          }
+          <div className="HideNSeekCounter-btn-container">
+            <button className="HideNSeekCounter-btn" type="button" onClick={this.handleRestartBtnClick}>Restart Count</button>
+            <button className="HideNSeekCounter-btn" type="button" onClick={this.handleReturnBtnClick}>Return to Setup</button>
+          </div>
+        </>
       }
       </div>
     )

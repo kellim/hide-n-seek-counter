@@ -33,9 +33,33 @@
 }
 
 .NumberInput button {
-  margin-top: 2rem;
-  padding: .75rem 3rem;
+  margin-top: 3rem;
+  padding: .75rem 2rem;
+  font-size: 1.1rem;
   background-color: orangered;
   color: white;
   width: 14rem;
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.NumberInput Button:hover,
+.NumberInput Button:active {
+  background-color: tomato;
+}
+
+.NumberInput Button:active {
+  transform:translateY(1px);
+}
+
+
+@media (min-width: 49em) {
+  .NumberInput label {
+    font-size: 1.6rem;
+  }
+
+  .NumberInput input {
+    font-size: 1.6rem;
+    width: 4rem;
+  }
 }
