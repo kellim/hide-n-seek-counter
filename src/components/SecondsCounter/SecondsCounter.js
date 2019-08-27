@@ -3,9 +3,9 @@ import './SecondsCounter.css'
 
 function SecondsCounter(props) {
 
-  const { currentCount } = props
+  const { currentCount, done } = props
   return (
-    <div className="SecondsCounter">
+    <div className="SecondsCounter" style={{ color: done ? "crimson" : "tomato"}}>
       <p>{currentCount}</p>
     </div>
   )

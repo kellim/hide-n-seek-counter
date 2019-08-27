@@ -72,14 +72,13 @@ class HideNSeekCounter extends Component {
         <h1 className="HideNSeekCounter-title">Hide & Seek Counter</h1>
       {appStatus === "setup" ?
         <>
-          <p className="HideNSeekCounter-setup-text">The person who's not hiding: Enter the seconds to count up to and click
-            the <strong>Start Counting</strong> button. Then you can close your eyes while everyone else
-            hides as you'll hear a sound when it's time to say "Ready or not, here I come!" Just make sure your volume is on.</p> 
+          <p className="HideNSeekCounter-setup-text">To the person who's not hiding: Enter the seconds to count up to and click
+            the <strong>Start Counting</strong> button. You'll hear a sound when it's time to say "Ready or not, here I come!" so make sure your volume is on.</p> 
           <NumberInput countValue={inputValue} handleChange={this.updateNumberInput} handleSubmit={this.processSetupForm} />
         </>
       :
         <>
-          <SecondsCounter currentCount={currentCount} />
+          <SecondsCounter currentCount={currentCount} done={appStatus==="done"} />
           {appStatus === "done" &&
             <div className="HideNSeekCounter-done">
               <p>Time's Up!</p> 
