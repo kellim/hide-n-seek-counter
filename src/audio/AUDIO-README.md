@@ -1,0 +1,3 @@
+## Audio File Information
+
+The audio file `timesup.mp3` was generated from [text2speech.org](https://www.text2speech.org/). According to text2speech.org on the day the audio file was created, "This service is free and you are allowed to use the speech files for any purpose, including commercial uses." On the About page, it mentions "This tool uses [CMU Flite](http://www.festvox.org/flite/) as TTS."
