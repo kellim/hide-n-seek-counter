@@ -4,6 +4,10 @@ This app lets you enter the amount of seconds to count up to for a Hide & Seek G
 it displays the seconds as it counts. When the time is up, it will play a sound and show text
 that says "Time's up! Ready or not, here I come!"
 
+## Demo
+
+You can use the app online at [hidenseek.kelli.app](https://hidenseek.kelli.app/)
+
 ## Run Project Locally in Development Mode
 
 * Run `npm install` to install dependencies
